@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Expendedora de Citas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Pantalla 1 -->
+  <div id="inicio" class="pantalla activa">
+    <div class="container">
+      <img src="expendedora.png" alt="Expendedora" class="background-img" />
+      <button class="start-btn" onclick="mostrarPantalla('seleccion')"></button>
+    </div>
+  </div>
+
+  <!-- Pantalla 2 -->
+  <div id="seleccion" class="pantalla">
+    <h2>Mi amor, elegí nuestra cita:</h2>
+    <img src="pareja.jpg" alt="Decoración" class="decoracion" />
+    <div class="citas-grid">
+      <div class="cita-btn" id="btn-1" onclick="mostrarCita(1)">1. 🍝<br>Cena romántica</div>
+      <div class="cita-btn" id="btn-2" onclick="mostrarCita(2)">2. 🎮<br>Jueguitos</div>
+      <div class="cita-btn" id="btn-3" onclick="mostrarCita(3)">3. 🎥<br>Películas</div>
+      <div class="cita-btn" id="btn-4" onclick="mostrarCita(4)">4. 🏠<br>Casa y amor</div>
+      <div class="cita-btn" id="btn-5" onclick="mostrarCita(5)">5. 🌳<br>Picnic</div>
+      <div class="cita-btn" id="btn-6" onclick="mostrarCita(6)">6. 🍰<br>Merienda</div>
+      <div class="cita-btn" id="btn-7" onclick="mostrarCita(7)">7. 🚗<br>Paseo</div>
+      <div class="cita-btn" id="btn-8" onclick="mostrarCita(8)">8. 🌌<br>Estrellas</div>
+    </div>
+    <div id="mensajeEmergente" class="mensaje-emergente"></div>
+    <button class="btn" onclick="reiniciar()">Volver al inicio</button>
+    <button class="btn" onclick="restaurarCitas()">Reiniciar todas las citas</button>
+    <p id="mensajeUsado"></p>
+  </div>
+
+  <!-- Pantalla 3 -->
+  <div id="imprimiendo" class="pantalla">
+    <h2>Imprimiendo... 💗</h2>
+    <p style="font-size: 60px;">💖</p>
+  </div>
+
+  <!-- Pantalla 4 -->
+  <div id="ticketFinal" class="pantalla">
+    <div id="ticket">
+      <img src="ticket_final_con_texto.png" alt="Ticket fondo" class="ticket-fondo" />
+      <div class="contenido-ticket">
+        <h2>Cita con el amor</h2>
+        <h2>de mi vida</h2>
+        <p id="contenidoCita"></p>
+      </div>
+    </div>
+    <button class="btn" onclick="guardarTicket()">Guardar Ticket</button>
+    <button class="btn" onclick="marcarUsado()">Marcar como usada</button>
+    <button class="btn" onclick="reiniciar()">Volver al inicio</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

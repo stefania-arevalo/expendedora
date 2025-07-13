@@ -1,0 +1,159 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  background-color: #ffd2eb;
+  color: #7e0038;
+  font-family: 'Caveat', cursive;
+  text-align: center;
+  overflow: hidden; /* Evita scroll */
+}
+
+.pantalla {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  padding: 20px;
+}
+
+.activa {
+  display: flex;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+
+.background-img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+
+.start-btn {
+  position: absolute;
+  bottom: 9%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 14%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.citas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 150px));
+  gap: 12px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.cita-btn {
+  background-color: #fff;
+  border: 2px solid #ff99cc;
+  border-radius: 15px;
+  padding: 10px;
+  font-size: 18px;
+  font-family: 'Caveat', cursive;
+  word-wrap: break-word;
+  text-align: center;
+  cursor: pointer;
+}
+
+.cita-btn:hover {
+  background-color: #ffe6f0;
+}
+
+.btn {
+  background-color: #ff66a3;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-family: 'Caveat', cursive;
+  margin: 8px;
+  cursor: pointer;
+}
+
+.decoracion {
+  width: 180px;
+  margin-top: 10px;
+}
+
+#ticket {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+}
+
+.ticket-fondo {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.contenido-ticket {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  color: #7e0038;
+  font-size: 18px;
+  text-align: center;
+  line-height: 1.5;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.contenido-ticket p {
+  margin-top: 15px;
+}
+
+#mensajeUsado {
+  color: #b30059;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.cita-usada {
+  background-color: #f8b6d2 !important;
+  border-color: #e46fa3 !important;
+  color: #888 !important;
+  text-decoration: line-through;
+}
+
+.mensaje-emergente {
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffccdd;
+  color: #b30059;
+  padding: 10px 18px;
+  border-radius: 15px;
+  font-size: 18px;
+  font-family: 'Caveat', cursive;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+.mensaje-emergente.mostrar {
+  opacity: 1;
+  pointer-events: auto;
+}
