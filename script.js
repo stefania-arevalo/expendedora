@@ -10,15 +10,15 @@ const citas = {
 };
 
 let citaActual = null;
-let usadas = new Set(JSON.parse(localStorage.getItem('citasUsadas')) || []); // ⬅ Recupera las citas usadas
+let usadas = new Set(JSON.parse(localStorage.getItem('citasUsadas')) || []);
 
-// Mostrar pantallas
+// Muestra pantalla activa
 function mostrarPantalla(id) {
   document.querySelectorAll('.pantalla').forEach(p => p.classList.remove('activa'));
   document.getElementById(id).classList.add('activa');
 }
 
-// Mostrar cita seleccionada
+// Muestra cita elegida
 function mostrarCita(num) {
   if (usadas.has(num)) {
     mostrarMensajeEmergente('Esa cita ya fue usada, bebé ❤️');
@@ -45,19 +45,21 @@ function guardarTicket() {
   });
 }
 
-// Marcar cita como usada y guardar en localStorage
+// Marca como usada y guarda en localStorage
 function marcarUsado() {
   if (citaActual !== null) {
     usadas.add(citaActual);
-    localStorage.setItem('citasUsadas', JSON.stringify([...usadas])); // ⬅ Guardamos
+    localStorage.setItem('citasUsadas', JSON.stringify(Array.from(usadas)));
+
     const boton = document.getElementById(`btn-${citaActual}`);
-    boton.classList.add('cita-usada');
+    if (boton) boton.classList.add('cita-usada');
+
     document.getElementById('mensajeUsado').innerText = '✅ ¡Cita marcada como realizada!';
     mostrarPantalla('inicio');
   }
 }
 
-// Volver al inicio
+// Reiniciar a pantalla principal
 function reiniciar() {
   document.getElementById('contenidoCita').innerText = '';
   document.getElementById('mensajeUsado').innerText = '';
@@ -68,31 +70,29 @@ function reiniciar() {
 function restaurarCitas() {
   usadas.clear();
   localStorage.removeItem('citasUsadas');
+
   for (let i = 1; i <= 8; i++) {
     const boton = document.getElementById(`btn-${i}`);
-    boton.classList.remove('cita-usada');
+    if (boton) boton.classList.remove('cita-usada');
   }
 }
 
-// Mostrar las citas usadas al cargar
-window.addEventListener('DOMContentLoaded', () => {
-  usadas.forEach(num => {
-    const btn = document.getElementById(`btn-${num}`);
-    if (btn) {
-      btn.classList.add('cita-usada');
-    }
-  });
-});
-
-// Mostrar mensaje emergente bonito
+// Mostrar mensaje emergente lindo
 function mostrarMensajeEmergente(texto) {
   const mensaje = document.createElement('div');
   mensaje.className = 'mensaje-emergente mostrar';
-  mensaje.textContent = texto;
+  mensaje.innerText = texto;
   document.body.appendChild(mensaje);
 
   setTimeout(() => {
-    mensaje.classList.remove('mostrar');
     mensaje.remove();
   }, 3000);
 }
+
+// ✅ AL INICIO: Marcar citas usadas si existen en localStorage
+window.addEventListener('DOMContentLoaded', () => {
+  usadas.forEach(num => {
+    const boton = document.getElementById(`btn-${num}`);
+    if (boton) boton.classList.add('cita-usada');
+  });
+});
